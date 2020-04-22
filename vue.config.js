@@ -1,6 +1,7 @@
 const path = require('path');
 
 module.exports = {
+  publicPath: "/vue-heroicons/",
   outputDir: "docs",
   configureWebpack: {
     resolve: {
