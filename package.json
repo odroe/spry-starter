@@ -1,6 +1,9 @@
 {
   "name": "@bytegem/vue-heroicons",
   "version": "0.1.0",
+  "license": "MIT",
+  "private": false,
+  "main": "dist/heroicons.umd.js",
   "scripts": {
     "build": "vue-cli-service build --target lib --filename heroicons --dest dist src/main.js",
     "generator": "vue-cli-service heroicons:generator",
@@ -21,5 +24,11 @@
     "service": [
       "@vue/cli/plugin.js"
     ]
-  }
+  },
+  "files": ["dist/heroicons.*"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bytegem/vue-heroicons.git"
+  },
+  "homepage": "https://bytegem.github.io/vue-heroicons/"
 }
