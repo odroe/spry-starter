@@ -4,7 +4,8 @@
   "scripts": {
     "build": "vue-cli-service build --target lib --filename heroicons --dest dist src/main.js",
     "generator": "vue-cli-service heroicons:generator",
-    "docs:serve": "vue-cli-service serve"
+    "docs:serve": "vue-cli-service serve",
+    "docs:build": "vue-cli-service build"
   },
   "dependencies": {},
   "devDependencies": {
