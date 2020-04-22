@@ -1,24 +1,37 @@
-# vue-heroicons
+# Heroicons for Vue.js - Free, Open source icons
 
-## Project setup
-```
-npm install
+<img src=".github/social.png" width="100%" />
+
+A set of free MIT-licensed high-quality SVG icons for Vue.js development.
+
+## Install
+
+- npm
+    ```bash
+    npm i @bytegem/vue-heroicons -S
+    ```
+- yarn
+    ```bash
+    yarn add @bytegem/vue-heroicons
+    ```
+
+## Using
+
+```es6
+import Vue from 'vue';
+import Heroicons from '@bytegem/vue-heroicons';
+
+Vue.use(Heroicons)
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
+## Example
+
+```vue
+<HeroIconAdjustmentsOutline />
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+Or
 
-### Lints and fixes files
+```vue
+<hero-icon-adjustments-outline />
 ```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
