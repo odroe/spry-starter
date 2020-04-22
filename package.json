@@ -1,6 +1,6 @@
 {
   "name": "@bytegem/vue-heroicons",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "private": false,
   "main": "dist/heroicons.umd.js",
@@ -25,7 +25,9 @@
       "@vue/cli/plugin.js"
     ]
   },
-  "files": ["dist/heroicons.*"],
+  "files": [
+    "dist/heroicons.*"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/bytegem/vue-heroicons.git"
