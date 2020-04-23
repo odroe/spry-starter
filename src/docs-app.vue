@@ -9,10 +9,7 @@
             Heroicons
             <div class="-mb-8 absolute left-full bottom-full">
               <button class="focus:outline-none" @click="onToggleTheme">
-                <icon-render v-if="darkMode && hasSolid" name="HeroIconMoonSolid" class="p-px w-8 h-8" />
-                <icon-render v-else-if="darkMode" name="HeroIconMoonOutline" class="p-px w-8 h-8" />
-                <icon-render v-else-if="hasSolid" name="HeroIconSunSolid" class="p-px w-8 h-8" />
-                <icon-render v-else name="HeroIconSunOutline" class="p-px w-8 h-8" />
+                <icon-render :name="themeIcon" class="p-px w-8 h-8" />
               </button>
             </div>
           </h1>
@@ -64,7 +61,7 @@
             <icon-render name="HeroIconChartPieSolid" class="ml-3 -mt-1 w-6 h-6 text-black dark:text-white transition duration-150" />
           </a>
 
-          <div class="w-3"></div>
+          <div class="w-3 h-3"></div>
 
           <!-- The package repo -->
           <a href="https://github.com/bytegem/vue-heroicons" target="_blank" rel="noopener noreferrer" class="px-6 py-4 flex flex-row justify-center items-center text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-800 rounded-lg-xl focus:outline-none shadow focus:shadow-outline transition duration-150">
@@ -98,10 +95,7 @@
 
               <!-- Theme Toggle -->
               <button class="px-2 focus:outline-none" @click="onToggleTheme">
-                <icon-render v-if="darkMode && hasSolid" name="HeroIconMoonSolid" class="w-6 h-6 text-gray-800 dark:text-gray-200 transition duration-150" />
-                <icon-render v-else-if="darkMode" name="HeroIconMoonOutline" class="w-6 h-6 text-gray-800 dark:text-gray-200 transition duration-150" />
-                <icon-render v-else-if="hasSolid" name="HeroIconSunSolid" class="w-6 h-6 text-gray-800 dark:text-gray-200 transition duration-150" />
-                <icon-render v-else name="HeroIconSunOutline" class="w-6 h-6 text-gray-800 dark:text-gray-200 transition duration-150" />
+                <icon-render :name="themeIcon" class="w-6 h-6 text-gray-800 dark:text-gray-200 transition duration-150" />
               </button>
             </div>
           </div>
@@ -173,6 +167,31 @@ export default {
       }
 
       return icons;
+    },
+    themeIcon() {
+      let iconName = 'Moon';
+      const hours = new Date().getHours() - 12;
+      if (hours >= -6 && hours < 6) {
+        iconName = 'Sun';
+      }
+      if (this.hasSolid) {
+        return 'HeroIcon' + iconName + 'Solid';
+      }
+
+      return 'HeroIcon' + iconName + 'Outline';
+    }
+  },
+  watch: {
+    darkMode(useDark) {
+      document.body.classList.add('dark-mode-transition');
+      setTimeout(() => {
+        document.body.classList.remove('dark-mode-transition');
+      }, 1e3);
+      if (useDark) {
+        document.body.classList.add('dark-mode');
+      } else {
+        document.body.classList.remove('dark-mode');
+      }
     }
   },
   mounted() {
@@ -190,16 +209,22 @@ export default {
       }, 1500);
     });
     hljs.initHighlightingOnLoad();
+
+    if (window.matchMedia) {
+      const media = window.matchMedia("(prefers-color-scheme: dark)")
+      const handler = () => {
+        this.darkMode = media.matches;
+      }
+      media.addListener(handler);
+      handler();
+    } else {
+      const hours = new Date().getHours() - 12;
+      this.darkMode = !(hours >= -6 && hours < 6);
+    }
   },
   methods: {
     onToggleTheme() {
-      if (this.darkMode) {
-        this.darkMode = false;
-        document.body.classList.remove('dark-mode');
-        return;
-      }
-      this.darkMode = true;
-      document.body.classList.add('dark-mode');
+      this.darkMode = !this.darkMode;
     },
     onToggleSolid() {
       if (this.hasSolid) {
@@ -216,6 +241,17 @@ export default {
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+.dark-mode-transition .transition {
+	transition-duration: 300ms !important;
+	/* transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important; */
+}
+
+.emoji {
+	vertical-align: -10%;
+	font-size: 120%;
+	line-height: 1;
+}
 
 .-text-px { font-size: 0.9375rem; } /* 15px */
 .text-px  { font-size: 1.0625rem; } /* 17px */
