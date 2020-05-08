@@ -71,10 +71,10 @@ module.exports = context => () => {
 
   (() => {
     const components = names.map(name => {
-      return `export type ${name} = Component;`;
+      return `export declare const ${name}: Component;`
     }).join('\r\n');
     const heroiconsComponentsItems = names.map(name => {
-      return `  ${name}: ${name};`;
+      return `  ${name}: Component;`;
     }).join('\r\n');
     const indexTypeFile = `import { PluginFunction, Component } from 'vue';
 import { HeroiconsPluginOptions } from './lib';
@@ -88,12 +88,16 @@ ${heroiconsComponentsItems}
   [key: string]: Component;
 }
 
-type install = PluginFunction<HeroiconsPluginOptions>;
+type VueHeroiconsInstaller = PluginFunction<HeroiconsPluginOptions>;
 
 export interface Heroicons {
-  install: install;
+  install: VueHeroiconsInstaller;
   icons: HeroiconsComponents;
 }
+
+export declare const icons: HeroiconsComponents;
+
+export declare const Heroicons: Heroicons;
 
 export default Heroicons;
     `;
@@ -102,71 +106,4 @@ export default Heroicons;
       indexTypeFile
     );
   })();
-
-  (() => {
-    const umdTypeFile = `declare module 'vue-heroicons' {
-
-}
-    `;
-  })();
 };
-
-// module.exports = function() {
-  // console.log('📦 Fetching Heroicons...');
-  // let cachePath = path.resolve(__dirname, 'cache');
-  // let zipPath = path.resolve(cachePath, 'heroicons-master.zip');
-  // let unzipPath = path.resolve(cachePath, 'heroicons-master');
-  // if (!fs.existsSync(cachePath)) {
-  //   fs.mkdirSync(cachePath);
-  // }
-
-  // let iconRootPath = path.resolve(__dirname, '../../../lib/icons');
-  // if (fs.existsSync(iconRootPath)) {
-  //   fs.rmdirSync(iconRootPath, { recursive: true });
-  //   fs.mkdirSync(iconRootPath);
-  // }
-
-  // if (fs.existsSync(zipPath)) {
-  //   fs.unlinkSync(zipPath);
-  // }
-  // if (fs.existsSync(unzipPath)) {
-  //   fs.rmdirSync(unzipPath, { recursive: true });
-  // }
-
-  // let writeStream = fs.createWriteStream(zipPath);
-  // fetchZip(url, async (chunk) => {
-  //   writeStream.write(chunk);
-  // }, async () => {
-  //   writeStream.close();
-  //   console.log('Unzip...');
-  //   await extract(zipPath, { dir: cachePath });
-
-  //   // outline
-  //   iconPath = path.resolve(iconRootPath, 'outline');
-  //   if (!fs.existsSync(iconPath)) {
-  //     fs.mkdirSync(iconPath);
-  //   }
-  //   let _path = path.resolve(unzipPath, 'dist/outline-md');
-  //   let _strArr = [];
-  //   fs.readdirSync(_path).forEach(name => {
-  //     let str = fs.readFileSync(path.resolve(_path, name));
-  //     fs.writeFileSync(path.resolve(iconPath, getfilenameBasename(name) + '.vue'), `<template>\r\n${str}</template>`);
-  //     _strArr.push(`export { default as ${getClassname(name)}Outline } from './${getfilenameBasename(name)}.vue';`);
-  //   });
-  //   fs.writeFileSync(path.resolve(iconPath, 'index.js'), _strArr.join("\r\n"));
-
-  //   // solid
-  //   iconPath = path.resolve(iconRootPath, 'solid');
-  //   if (!fs.existsSync(iconPath)) {
-  //     fs.mkdirSync(iconPath);
-  //   }
-  //   _path = path.resolve(unzipPath, 'dist/solid-sm');
-  //   _strArr = [];
-  //   fs.readdirSync(_path).forEach(name => {
-  //     let str = fs.readFileSync(path.resolve(_path, name));
-  //     fs.writeFileSync(path.resolve(iconPath, getfilenameBasename(name) + '.vue'), `<template>\r\n${str}</template>`);
-  //     _strArr.push(`export { default as ${getClassname(name)}Solid } from './${getfilenameBasename(name)}.vue';`);
-  //   });
-  //   fs.writeFileSync(path.resolve(iconPath, 'index.js'), _strArr.join("\r\n"));
-  // });
-// };
