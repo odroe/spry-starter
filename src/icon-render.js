@@ -1,4 +1,4 @@
-import * as icons from '@bytegem/vue-heroicons';
+import { icons } from '@bytegem/vue-heroicons';
 
 export const IconsNamesMinix = {
   computed: {
@@ -13,14 +13,13 @@ export const IconsNamesMinix = {
         }
       }
       return _icons.filter(component => {
-        return new RegExp(/^(HeroIcon)(\w+)(Solid|Outline)$/).test(component.name);
+        return new RegExp(/^(Heroicons)(\w+)(Solid|Outline)$/).test(component.name);
       }).map(component => component.name);
     },
   }
 };
 
 export const IconRender = {
-  mixins: [IconsNamesMinix],
   props: {
     name: {
       required: true,
@@ -29,6 +28,7 @@ export const IconRender = {
   },
   render(h) {
     const { name, ...props } = this.$props;
-    return h(name, { props });
+    console.log(icons[name]);
+    return h(icons[name], { props });
   },
 };

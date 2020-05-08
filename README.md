@@ -24,14 +24,33 @@ import Heroicons from '@bytegem/vue-heroicons';
 Vue.use(Heroicons)
 ```
 
+### Options
+
+| Key | Desc |
+|----|----|
+| `compomnents` | Vue Components. You can only register part of the Heroicons icon component globally or a custom Vue component. |
+| `removePrefix` | Used to remove the `Heroicons` prefix from the component name. |
+| `onlySolid` | Register only **solid** style icon components. |
+| `onlyOutline` | Register only **outline** style icon components. |
+
+> Only one of them can be set for `onlysolid` and `onlyoutline` selection, otherwise unexpected registration will occur
+
 ## Example
 
 ```vue
-<HeroIconAdjustmentsOutline />
+<HeroiconsAnnotationOutline />
 ```
 
 Or
 
 ```vue
-<hero-icon-adjustments-outline />
+<<heroicons-annotation-outline /> />
 ```
+
+## Package sizes
+
+| name | size | gzip |
+|:----|:----:|:----:|
+| `heroicons.umd.min.js` | 163.23 KiB | **32.35 KiB** |
+| `heroicons.umd.js` | 713.77 KiB | **55.38 KiB** |
+| `heroicons.umd.min.js` | 713.38 KiB | **55.29 KiB** |

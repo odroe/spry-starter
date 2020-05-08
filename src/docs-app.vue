@@ -31,9 +31,9 @@
             id="clipboard-copy-action"
             data-clipboard-text="npm i @bytegem/vue-heroicons -S"
           >
-            <HeroIconCheveronRightOutline class="w-4 h-4 mr-1" />
+            <HeroiconsCheveronRightOutline class="w-4 h-4 mr-1" />
             <span class=" font-medium text-sm">npm i @bytegem/vue-heroicons -S</span>
-            <HeroIconDocumentDuplicateOutline class="w-4 h-4 ml-6 text-gray-400 cursor-pointer" />
+            <HeroiconsDocumentDuplicateOutline class="w-4 h-4 ml-6 text-gray-400 cursor-pointer" />
           </div>
         </div>
 
@@ -58,7 +58,7 @@
           <!-- Icon repo -->
           <a href="https://github.com/refactoringui/heroicons" target="_blank" rel="noopener noreferrer" class="px-6 py-4 flex flex-row justify-center items-center text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-800 rounded-lg-xl focus:outline-none shadow focus:shadow-outline transition duration-150">
             <p class="font-medium text-lg">Design Icons</p>
-            <icon-render name="HeroIconChartPieSolid" class="ml-3 -mt-1 w-6 h-6 text-black dark:text-white transition duration-150" />
+            <icon-render name="HeroiconsChartPieSolid" class="ml-3 -mt-1 w-6 h-6 text-black dark:text-white transition duration-150" />
           </a>
 
           <div class="w-3 h-3"></div>
@@ -78,19 +78,19 @@
           <div class="relative flex flex-row justify-between h-16 text-xl">
             <div class="-mx-2 px-6 pr-2 flex flex-row items-center rounded-l-lg-xl focus:outline-none z-10 pointer-events-none">
               <div class="px-2">
-                <icon-render class="w-6 h-6 text-gray-400 dark:text-gray-600 transition duration-150" name="HeroIconSearchOutline" />
+                <icon-render class="w-6 h-6 text-gray-400 dark:text-gray-600 transition duration-150" name="HeroiconsSearchOutline" />
               </div>
             </div>
             <div class="absolute inset-0">
               <div class="h-full rounded-lg-xl dark:shadow-md transition duration-150">
-                <input class="w-full h-full text-gray-800 dark:text-gray-200 bg-white dark:bg-gray-800 rounded-lg-xl outline-none shadow dark:shadow-md focus:shadow-outline transition duration-150" type="text" placeholder="Search 150 icons (Press &quot;/&quot; to focus)" style="padding: 0px 8rem 0px 4.5rem;" v-model.trim="keywords">
+                <input class="w-full h-full text-gray-800 dark:text-gray-200 bg-white dark:bg-gray-800 rounded-lg-xl outline-none shadow dark:shadow-md focus:shadow-outline transition duration-150" type="text" :placeholder="`Search ${icons.length/2} icons (Press &quot;/&quot; to focus)`" style="padding: 0px 8rem 0px 4.5rem;" v-model.trim="keywords">
               </div>
             </div>
             <div class="-mx-2 px-6 flex flex-row rounded-r-lg-xl focus:outline-none focus:shadow-outline z-10 transition duration-150">
               <!-- Has solid -->
               <button class="px-2 focus:outline-none" @click="onToggleSolid">
-                <icon-render v-if="hasSolid" name="HeroIconCursorClickSolid" class="w-6 h-6 text-gray-800 dark:text-gray-200 transition duration-150" />
-                <icon-render v-else name="HeroIconCursorClickOutline" class="w-6 h-6 text-gray-800 dark:text-gray-200 transition duration-150" />
+                <icon-render v-if="hasSolid" name="HeroiconsCursorClickSolid" class="w-6 h-6 text-gray-800 dark:text-gray-200 transition duration-150" />
+                <icon-render v-else name="HeroiconsCursorClickOutline" class="w-6 h-6 text-gray-800 dark:text-gray-200 transition duration-150" />
               </button>
 
               <!-- Theme Toggle -->
@@ -135,7 +135,7 @@ import ClipboardJS from 'clipboard';
 import { IconRender, IconsNamesMinix } from './icon-render';
 
 function getIconName(name) {
-  return name.replace('HeroIcon', '').replace(/(Outline|Solid)$/, '');
+  return name.replace('Heroicons', '').replace(/(Outline|Solid)$/, '');
 }
 
 export default {
@@ -153,10 +153,10 @@ export default {
   },
   computed: {
     solidIcons() {
-      return this.icons.filter(name => new RegExp(/^HeroIcon(\w+)(Solid)$/).test(name));
+      return this.icons.filter(name => new RegExp(/^Heroicons(\w+)(Solid)$/).test(name));
     },
     outlineIcons() {
-      return this.icons.filter(name => new RegExp(/^HeroIcon(\w+)(Outline)$/).test(name));
+      return this.icons.filter(name => new RegExp(/^Heroicons(\w+)(Outline)$/).test(name));
     },
     selectedIcons() {
       let icons = this.hasSolid ? this.solidIcons : this.outlineIcons;
@@ -175,10 +175,10 @@ export default {
         iconName = 'Sun';
       }
       if (this.hasSolid) {
-        return 'HeroIcon' + iconName + 'Solid';
+        return 'Heroicons' + iconName + 'Solid';
       }
 
-      return 'HeroIcon' + iconName + 'Outline';
+      return 'Heroicons' + iconName + 'Outline';
     }
   },
   watch: {
