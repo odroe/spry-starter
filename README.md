@@ -1,8 +1,10 @@
 # Heroicons for Vue.js - Free, Open source icons
 
+A set of free MIT-licensed high-quality SVG icons for Vue.js development.
+
 <img src=".github/social.png" width="100%" />
 
-A set of free MIT-licensed high-quality SVG icons for Vue.js development.
+[Live Demos](https://bytegem.github.io/vue-heroicons/) | [Heroicons SVG source](https://github.com/refactoringui/heroicons)
 
 ## Install
 
@@ -17,11 +19,13 @@ A set of free MIT-licensed high-quality SVG icons for Vue.js development.
 
 ## Using
 
+Global register components：
+
 ```es6
 import Vue from 'vue';
 import Heroicons from '@bytegem/vue-heroicons';
 
-Vue.use(Heroicons)
+Vue.use(Heroicons /* , options */);
 ```
 
 ### Options
@@ -35,6 +39,16 @@ Vue.use(Heroicons)
 
 > Only one of them can be set for `onlysolid` and `onlyoutline` selection, otherwise unexpected registration will occur
 
+### Only using single Icon to Vue Component
+
+```es6
+import { HeroiconsAnnotationOutline } from '@bytegem/vue-heroicons';
+
+export default {
+    components: { HeroiconsAnnotationOutline }
+};
+```
+
 ## Example
 
 ```vue
@@ -44,7 +58,7 @@ Vue.use(Heroicons)
 Or
 
 ```vue
-<<heroicons-annotation-outline /> />
+<heroicons-annotation-outline />
 ```
 
 ## Package sizes
@@ -53,4 +67,8 @@ Or
 |:----|:----:|:----:|
 | `heroicons.umd.min.js` | 163.23 KiB | **32.35 KiB** |
 | `heroicons.umd.js` | 713.77 KiB | **55.38 KiB** |
-| `heroicons.umd.min.js` | 713.38 KiB | **55.29 KiB** |
+| `heroicons.common.js` | 713.38 KiB | **55.29 KiB** |
+
+## LICENSE
+
+The [MIT](LICENSE) license
