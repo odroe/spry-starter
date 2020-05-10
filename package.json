@@ -7,7 +7,7 @@
   "main": "dist/heroicons.umd.js",
   "types": "types/index.d.ts",
   "scripts": {
-    "build": "vue-cli-service build --target lib --filename heroicons --dest dist src/main.js",
+    "build": "vue-cli-service build --target lib --filename heroicons --dest dist lib/main.js",
     "generator": "vue-cli-service heroicons:generator",
     "docs:serve": "vue-cli-service serve",
     "docs:build": "vue-cli-service build"
