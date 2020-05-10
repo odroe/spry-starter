@@ -57,7 +57,10 @@ module.exports = context => () => {
   const iconsIndexFile = names.map(name => {
     return `import ${name} from './${name}.vue';`;
   }).join('\r\n')
-    + `\r\n\rexport default {\r\n`
+    + `\r\nexport {\r\n`
+    + names.map(name => '  ' + name).join(',\r\n')
+    + '\r\n};\r\n'
+    + '\r\nexport default {\r\n'
     + names.map(name => '  ' + name).join(',\r\n')
     + '\r\n};\r\n\r\n'
   ;
