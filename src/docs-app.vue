@@ -153,10 +153,10 @@ export default {
   },
   computed: {
     solidIcons() {
-      return this.icons.filter(name => new RegExp(/^Heroicons(\w+)(Solid)$/).test(name));
+      return this.icons.filter(name => new RegExp(/^Heroicons(\w+)(Solid)$/).test(name)).sort();
     },
     outlineIcons() {
-      return this.icons.filter(name => new RegExp(/^Heroicons(\w+)(Outline)$/).test(name));
+      return this.icons.filter(name => new RegExp(/^Heroicons(\w+)(Outline)$/).test(name)).sort();
     },
     selectedIcons() {
       let icons = this.hasSolid ? this.solidIcons : this.outlineIcons;
