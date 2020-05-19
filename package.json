@@ -1,6 +1,6 @@
 {
   "name": "@bytegem/vue-heroicons",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "license": "MIT",
   "private": false,
   "index": "dist/heroicons.common.js",
