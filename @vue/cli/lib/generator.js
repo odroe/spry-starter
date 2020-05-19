@@ -3,8 +3,6 @@ const fs = require('fs-extra');
 
 function getIconBasename(filename) {
   return path.basename(filename, '.svg')
-    .replace('md-', '')
-    .replace('sm-', '')
     .replace('_', '-');
 }
 
@@ -27,10 +25,10 @@ export default {
 
 module.exports = context => () => {
   const lib = (...p) => path.resolve(context, 'lib', ...p);
-  const source = (...p) => path.resolve(context, 'source', 'dist', ...p);
+  const source = (...p) => path.resolve(context, 'source', ...p);
 
-  const outline = fs.readdirSync(source('outline-md')).map(p => source('outline-md', p));
-  const solid = fs.readdirSync(source('solid-sm')).map(p => source('solid-sm', p));
+  const outline = fs.readdirSync(source('outline')).map(p => source('outline', p));
+  const solid = fs.readdirSync(source('solid')).map(p => source('solid', p));
 
   fs.removeSync(lib('icons'));
   fs.mkdirSync(lib('icons'));

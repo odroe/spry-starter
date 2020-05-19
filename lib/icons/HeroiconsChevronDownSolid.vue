@@ -5,6 +5,6 @@
 </template>
 <script>
 export default {
-  name: 'HeroiconsCheveronDownSolid'
+  name: 'HeroiconsChevronDownSolid'
 }
 </script>
