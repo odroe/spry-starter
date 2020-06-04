@@ -6,7 +6,7 @@ module.exports = {
   configureWebpack: {
     resolve: {
       alias: {
-        '@bytegem/vue-heroicons': path.resolve(__dirname, 'dist/heroicons.common.js'),
+        '@bytegem/vue-heroicons': path.resolve(__dirname, 'lib/main.js'),
       }
     }
   },
