@@ -63,11 +63,9 @@ Or
 
 ## Package sizes
 
-| name | size | gzip |
-|:----|:----:|:----:|
-| `heroicons.umd.min.js` | 181.97 KiB | **34.67 KiB** |
-| `heroicons.umd.js` | 757.71 KiB | **58.13 KiB** |
-| `heroicons.common.js` | 757.32 KiB | **58.01 KiB** |
+| size | gzip |
+|:----:|:----:|
+| 219.3 kB | 39.9 kB |
 
 ## LICENSE
 
