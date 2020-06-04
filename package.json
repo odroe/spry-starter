@@ -3,8 +3,8 @@
   "version": "0.3.2",
   "license": "MIT",
   "private": false,
-  "index": "dist/heroicons.common.js",
-  "main": "dist/heroicons.umd.js",
+  "index": "lib/main.js",
+  "main": "lin/main.js",
   "types": "types/index.d.ts",
   "scripts": {
     "build": "vue-cli-service heroicons:generator && vue-cli-service build --target lib --filename heroicons --dest dist lib/main.js",
@@ -12,7 +12,9 @@
     "docs:serve": "vue-cli-service serve",
     "docs:build": "vue-cli-service build"
   },
-  "dependencies": {},
+  "dependencies": {
+    "heroicons": "^0.3.6"
+  },
   "devDependencies": {
     "@vue/cli-service": "^4.3.1",
     "clipboard": "^2.0.6",
@@ -31,7 +33,7 @@
     ]
   },
   "files": [
-    "dist/heroicons.*",
+    "lib",
     "types/*.d.ts"
   ],
   "repository": {

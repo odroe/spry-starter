@@ -25,7 +25,7 @@ export default {
 
 module.exports = context => () => {
   const lib = (...p) => path.resolve(context, 'lib', ...p);
-  const source = (...p) => path.resolve(context, 'source', ...p);
+  const source = (...p) => path.resolve(context, 'node_modules', 'heroicons', ...p);
 
   const outline = fs.readdirSync(source('outline')).map(p => source('outline', p));
   const solid = fs.readdirSync(source('solid')).map(p => source('solid', p));
