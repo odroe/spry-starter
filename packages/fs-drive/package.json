@@ -1,12 +1,7 @@
 {
-  "name": "storage-box",
-  "version": "0.0.2",
-  "keywords": [
-    "storage",
-    "box",
-    "cache"
-  ],
-  "description": "Intuitive and easy-to-use storage box.",
+  "name": "@storage-box/fs",
+  "version": "0.0.0",
+  "description": "Node.js fs local file drive for Storage Box.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -18,8 +13,14 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/odroe/storage-box.git",
-    "directory": "packages/storage-box"
+    "directory": "packages/fs-drive"
   },
+  "keywords": [
+    "storage",
+    "fs",
+    "box",
+    "node"
+  ],
   "author": "Odroe, Inc. <hello@odroe.com> (http://odroe.com/)",
   "license": "BSD-3-Clause",
   "bugs": {
@@ -27,6 +28,11 @@
   },
   "homepage": "https://github.com/odroe/storage-box#readme",
   "devDependencies": {
+    "@types/node": "^16.6.2",
+    "storage-box": "^0.0.2",
     "typescript": "^4.3.5"
+  },
+  "peerDependencies": {
+    "storage-box": "^0.0.2"
   }
 }

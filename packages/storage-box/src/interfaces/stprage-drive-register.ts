@@ -1,9 +1,9 @@
 import { StorageBoxInterface } from "./storage-box.interface";
-import { StorageDriveInterface } from "./storage-drive.interface";
+import { StorageBoxDriveInterface } from "./storage-drive.interface";
 
 /**
  * Storage drive register.
  **/
-export type StorageDriveRegister<T extends StorageDriveInterface> = (
+export type StorageBoxDriveRegister<T extends StorageBoxDriveInterface> = (
   box: StorageBoxInterface
 ) => T;

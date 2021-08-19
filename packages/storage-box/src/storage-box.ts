@@ -1,7 +1,7 @@
 import {
   StorageBoxInterface,
-  StorageDriveInterface,
-  StorageDriveRegister,
+  StorageBoxDriveInterface,
+  StorageBoxDriveRegister,
 } from "./interfaces";
 import { memoryDriveReguster } from "./memory-drive";
 
@@ -12,13 +12,13 @@ export const DEFAULT_STORAGE_DRIVE_NAME = <const>"memory";
  * @class
  * @implements {StorageBoxInterface}
  */
-export class StorageBox<T extends StorageDriveInterface>
+export class StorageBox<T extends StorageBoxDriveInterface>
   implements StorageBoxInterface
 {
   // Private properties, registed drives creator.
   static #registers: Record<
     string,
-    StorageDriveRegister<StorageDriveInterface>
+    StorageBoxDriveRegister<StorageBoxDriveInterface>
   > = {};
 
   // Private properties.
@@ -38,7 +38,7 @@ export class StorageBox<T extends StorageDriveInterface>
   constructor(
     public readonly name: string,
     public readonly drive:
-      | StorageDriveRegister<T>
+      | StorageBoxDriveRegister<T>
       | string
       | typeof DEFAULT_STORAGE_DRIVE_NAME = DEFAULT_STORAGE_DRIVE_NAME
   ) {
@@ -65,9 +65,9 @@ export class StorageBox<T extends StorageDriveInterface>
    *
    * @throws {Error}
    */
-  getDrive<T extends StorageDriveInterface>(name: string): T {
+  getDrive<T extends StorageBoxDriveInterface>(name: string): T {
     // Get drive register.
-    const register: StorageDriveRegister<T> = StorageBox.#registers[
+    const register: StorageBoxDriveRegister<T> = StorageBox.#registers[
       name
     ] as any;
 
@@ -91,9 +91,9 @@ export class StorageBox<T extends StorageDriveInterface>
    * @param {string} name - Storage drive name.
    * @param {StorageDriveRegister<T>} register - Storage drive register.
    */
-  register<T extends StorageDriveInterface>(
+  register<T extends StorageBoxDriveInterface>(
     name: string,
-    drive: StorageDriveRegister<T>
+    drive: StorageBoxDriveRegister<T>
   ): void {
     // Register drive.
     StorageBox.register(name, drive);
@@ -146,9 +146,9 @@ export class StorageBox<T extends StorageDriveInterface>
    *
    * @returns {void}
    */
-  static register<T extends StorageDriveInterface>(
+  static register<T extends StorageBoxDriveInterface>(
     name: string,
-    drive: StorageDriveRegister<T>
+    drive: StorageBoxDriveRegister<T>
   ): void {
     StorageBox.#registers[name] = drive;
   }

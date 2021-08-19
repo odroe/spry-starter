@@ -1,7 +1,7 @@
 /**
  * Storage drive interface.
  **/
-export interface StorageDriveInterface {
+export interface StorageBoxDriveInterface {
   /**
    * Get a cached value of the drive.
    *

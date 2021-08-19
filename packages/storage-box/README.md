@@ -39,6 +39,7 @@ box.delete("key");
 ## Drives
 
 - **Memory**: Memory is the default storage mode of Storage Box, and it does not need to be installed out of the box.
+- **[Node.js fs](https://www.npmjs.com/package/@storage-box/fs)**: Using Node.js fs module to store data.
 
 ## Contribution
 

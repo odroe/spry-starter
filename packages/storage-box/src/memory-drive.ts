@@ -1,7 +1,7 @@
 import {
   StorageBoxInterface,
-  StorageDriveInterface,
-  StorageDriveRegister,
+  StorageBoxDriveInterface,
+  StorageBoxDriveRegister,
 } from "./interfaces";
 
 /**
@@ -9,7 +9,7 @@ import {
  * @class
  * @implements {StorageDriveInterface}
  */
-export class MemoryDrive implements StorageDriveInterface {
+export class MemoryDrive implements StorageBoxDriveInterface {
   // Cached data
   readonly data: Record<string, any> = {};
 
@@ -56,6 +56,6 @@ export class MemoryDrive implements StorageDriveInterface {
   }
 }
 
-export const memoryDriveReguster: StorageDriveRegister<MemoryDrive> = (
+export const memoryDriveReguster: StorageBoxDriveRegister<MemoryDrive> = (
   box: StorageBoxInterface
 ) => new MemoryDrive(box);

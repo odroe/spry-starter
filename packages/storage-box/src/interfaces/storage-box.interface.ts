@@ -1,10 +1,10 @@
-import { StorageDriveInterface } from "./storage-drive.interface";
-import { StorageDriveRegister } from "./stprage-drive-register";
+import { StorageBoxDriveInterface } from "./storage-drive.interface";
+import { StorageBoxDriveRegister } from "./stprage-drive-register";
 
 /**
  * StorageBox interface
  **/
-export interface StorageBoxInterface extends StorageDriveInterface {
+export interface StorageBoxInterface extends StorageBoxDriveInterface {
   /**
    * The name of the box.
    **/
@@ -17,7 +17,7 @@ export interface StorageBoxInterface extends StorageDriveInterface {
    * @returns A drive.
    *
    **/
-  getDrive<T extends StorageDriveInterface>(name: string): T;
+  getDrive<T extends StorageBoxDriveInterface>(name: string): T;
 
   /**
    * Register a drive.
@@ -26,8 +26,8 @@ export interface StorageBoxInterface extends StorageDriveInterface {
    * @param drive The drive.
    *
    **/
-  register<T extends StorageDriveInterface>(
+  register<T extends StorageBoxDriveInterface>(
     name: string,
-    register: StorageDriveRegister<T>
+    register: StorageBoxDriveRegister<T>
   ): void;
 }
