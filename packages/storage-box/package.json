@@ -1,6 +1,6 @@
 {
   "name": "storage-box",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Intuitive and easy-to-use storage box.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "basic-example",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "start": "ts-node main.ts",
     "build": "echo \"Skip basic example.\""
