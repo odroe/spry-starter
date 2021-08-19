@@ -1,6 +1,6 @@
 {
   "name": "@storage-box/fs",
-  "version": "0.0.0",
+  "version": "0.0.4",
   "description": "Node.js fs local file drive for Storage Box.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
