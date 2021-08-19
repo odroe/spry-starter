@@ -20,7 +20,7 @@
     "url": "git+https://github.com/odroe/storage-box.git",
     "directory": "packages/storage-box"
   },
-  "author": "Odroe, Inc. <hello@odroe.com> (http://odroe.com/)",
+  "author": "Odroe, Inc. <hello@odroe.com> (https://odroe.com)",
   "license": "BSD-3-Clause",
   "bugs": {
     "url": "https://github.com/odroe/storage-box/issues"
