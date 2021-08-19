@@ -5,6 +5,8 @@ import {
 } from "./interfaces";
 import { memoryDriveReguster } from "./memory-drive";
 
+export const DEFAULT_STORAGE_DRIVE_NAME = <const>"memory";
+
 /**
  * Storage box.
  * @class
@@ -35,9 +37,12 @@ export class StorageBox<T extends StorageDriveInterface>
    */
   constructor(
     public readonly name: string,
-    public readonly drive: StorageDriveRegister<T> | string | "memory"
+    public readonly drive:
+      | StorageDriveRegister<T>
+      | string
+      | typeof DEFAULT_STORAGE_DRIVE_NAME = DEFAULT_STORAGE_DRIVE_NAME
   ) {
-    if (!!this.name) {
+    if (!name) {
       throw new Error("Storage box name is required.");
     }
 
@@ -151,4 +156,4 @@ export class StorageBox<T extends StorageDriveInterface>
 
 // Register memory drive.
 // @default
-StorageBox.register("memory", memoryDriveReguster);
+StorageBox.register(DEFAULT_STORAGE_DRIVE_NAME, memoryDriveReguster);

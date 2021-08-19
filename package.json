@@ -11,10 +11,12 @@
   },
   "homepage": "https://github.com/odroe/storage-box#readme",
   "scripts": {
+    "preinstall": "npm i -ws",
     "format": "prettier --write ."
   },
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "examples/*"
   ],
   "devDependencies": {
     "prettier": "^2.3.2"
