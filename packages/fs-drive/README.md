@@ -22,10 +22,10 @@ import { register } from "@storage-box/fs";
 
 // Usge Storage static method
 StorageBox.reguster("fs", register);
+const box1 = new StorageBox("My Box", 'fs');
 
 // Or use StorageBox instance register in box.
-const box = new StorageBox("My Box");
-box.register("fs", register);
+const box2 = new StorageBox("My Box", register);
 ```
 
 ## Configuration
