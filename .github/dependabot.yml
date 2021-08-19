@@ -9,3 +9,15 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "daily"
+  - storage-box: "npm"
+    directory: "/packages/storage-box"
+    schedule:
+      interval: "daily"
+  - drive-fs: "npm"
+    directory: "/packages/fs-drive"
+    schedule:
+      interval: "daily"
+  - example-basic: "npm"
+    directory: "/examples/basic"
+    schedule:
+      interval: "daily"
