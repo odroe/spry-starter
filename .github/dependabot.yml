@@ -5,19 +5,19 @@
 
 version: 2
 updates:
-  - workspace: "npm" # See documentation for possible values
+  - package-ecosystem: "npm" # See documentation for possible values
     directory: "/" # Location of package manifests
     schedule:
       interval: "daily"
-  - storage-box: "npm"
+  - package-ecosystem: "npm"
     directory: "/packages/storage-box"
     schedule:
       interval: "daily"
-  - drive-fs: "npm"
+  - package-ecosystem: "npm"
     directory: "/packages/fs-drive"
     schedule:
       interval: "daily"
-  - example-basic: "npm"
+  - package-ecosystem: "npm"
     directory: "/examples/basic"
     schedule:
       interval: "daily"
