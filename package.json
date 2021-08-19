@@ -1,0 +1,22 @@
+{
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/odroe/storage-box.git"
+  },
+  "author": "Odroe, Inc. <hello@odroe.com>",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/odroe/storage-box/issues"
+  },
+  "homepage": "https://github.com/odroe/storage-box#readme",
+  "scripts": {
+    "format": "prettier --write ."
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "prettier": "^2.3.2"
+  }
+}

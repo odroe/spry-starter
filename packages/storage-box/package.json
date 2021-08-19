@@ -1,0 +1,23 @@
+{
+  "name": "storage-box",
+  "version": "0.0.0",
+  "description": "Intuitive and easy-to-use storage box.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/odroe/storage-box.git",
+    "directory": "packages/storage-box"
+  },
+  "author": "Odroe, Inc. <hello@odroe.com> (http://odroe.com/)",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/odroe/storage-box/issues"
+  },
+  "homepage": "https://github.com/odroe/storage-box#readme",
+  "devDependencies": {
+    "typescript": "^4.3.5"
+  }
+}

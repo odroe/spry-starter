@@ -1,50 +1,51 @@
 # Storage Box
 
- Intuitive and easy-to-use storage box.
+Intuitive and easy-to-use storage box.
 
- ## Features
+## Features
 
- - **Intuitive**: No need to learn new interfaces.
- - **Easy-to-use**: Streamlined API reduces user burden.
+- **Intuitive**: No need to learn new interfaces.
+- **Easy-to-use**: Streamlined API reduces user burden.
 
- ## Installation
+## Installation
 
- ```bash
- $ npm i storage-box --save
- ```
+```bash
+$ npm i storage-box --save
+```
 
- If you are using Yarn:
- ```bash
- $ yarn add storage-box
- ```
+If you are using Yarn:
 
- ## Usage
+```bash
+$ yarn add storage-box
+```
 
- ```ts
- import { StorageBox } from 'storage-box';
+## Usage
 
- const box = new StorageBox('My Box');
+```ts
+import { StorageBox } from "storage-box";
 
- // Read a value
- const value = box.get('key');
+const box = new StorageBox("My Box");
 
- // Write a value
- box.set('key', 'value');
+// Read a value
+const value = box.get("key");
 
- // Delete a value
- box.delete('key');
- ```
+// Write a value
+box.set("key", "value");
 
- ## Drives
+// Delete a value
+box.delete("key");
+```
 
-  - **Memory**: Memory is the default storage mode of Storage Box, and it does not need to be installed out of the box.
+## Drives
+
+- **Memory**: Memory is the default storage mode of Storage Box, and it does not need to be installed out of the box.
 
 ## Contribution
 
 Welcome to contribute to Storage Box. Here are some ways you can help:
 
- - [Report bugs](https://github.com/odroe/storage-box/issues)
- - [Create a Pull Request](https://github.com/odroe/storage-box/pulls)
+- [Report bugs](https://github.com/odroe/storage-box/issues)
+- [Create a Pull Request](https://github.com/odroe/storage-box/pulls)
 
 ## License
 
