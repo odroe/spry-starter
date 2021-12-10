@@ -30,7 +30,7 @@
   "devDependencies": {
     "@types/node": "^16.11.12",
     "storage-box": "^0.0.4",
-    "typescript": "^4.5.2"
+    "typescript": "^4.5.3"
   },
   "peerDependencies": {
     "storage-box": "^0.0.4"
