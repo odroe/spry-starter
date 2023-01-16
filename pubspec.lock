@@ -308,7 +308,7 @@ packages:
       name: spry
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.1.4"
+    version: "0.4.0"
   spry_fsrouter:
     dependency: "direct dev"
     description:
@@ -322,21 +322,21 @@ packages:
       name: spry_interceptor
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.1.0"
+    version: "0.2.0"
   spry_json:
     dependency: "direct main"
     description:
       name: spry_json
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.1.1"
+    version: "0.3.0"
   spry_router:
     dependency: "direct main"
     description:
       name: spry_router
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.3.2"
+    version: "0.4.1"
   stack_trace:
     dependency: transitive
     description:
