@@ -322,7 +322,7 @@ packages:
       name: spry_interceptor
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.2.0"
+    version: "0.3.0"
   spry_json:
     dependency: "direct main"
     description:
