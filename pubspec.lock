@@ -245,7 +245,7 @@ packages:
       name: prexp
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.1.1"
+    version: "0.1.2"
   pub_semver:
     dependency: transitive
     description:
@@ -308,35 +308,35 @@ packages:
       name: spry
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.1"
+    version: "0.5.0"
   spry_fsrouter:
     dependency: "direct dev"
     description:
       name: spry_fsrouter
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.1.0"
+    version: "1.0.0"
   spry_interceptor:
     dependency: "direct main"
     description:
       name: spry_interceptor
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.3.0"
+    version: "1.0.0"
   spry_json:
     dependency: "direct main"
     description:
       name: spry_json
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.3.0"
+    version: "1.0.0"
   spry_router:
     dependency: "direct main"
     description:
       name: spry_router
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.1"
+    version: "1.0.0"
   stack_trace:
     dependency: transitive
     description:
