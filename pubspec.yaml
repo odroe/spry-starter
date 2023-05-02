@@ -13,7 +13,7 @@ dependencies:
   spry_router: ^1.0.0
 
 dev_dependencies:
-  http: ^0.13.5
+  http: ^0.13.6
   http_methods: ^1.1.0
   lints: ^2.0.0
   spry_fsrouter: ^1.0.0
