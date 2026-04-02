@@ -1,33 +1,52 @@
 # Spry Starter
 
-Spry is an HTTP middleware framework for Dart to make web applications and APIs server more enjoyable to write.
+A starter template for building APIs with the current Spry file-routing runtime.
 
 ## Installation
 
 ```bash
-$ dart pub get
+dart pub get
 ```
 
 ## Running the app
 
 ```bash
-$ dart run bin/spry_starter.dart
+dart run spry serve
 ```
 
-## Generating routes
+The starter uses the current Spry project shape:
 
-If you add a new route to `lib/app/` directory, you need to run the following command to generate the routes.
-
-```bash
-$ dartn run spry_fsrouter
 ```
+routes/
+  index.dart
+  users/
+    index.get.dart
+    index.post.dart
+    [id].get.dart
+    [id].patch.dart
+    [id].delete.dart
+spry.config.dart
+```
+
+`routes/` is the source of truth. `spry.config.dart` selects the runtime target and local dev server settings.
 
 ## Running tests
 
 ```bash
-$ dart test
+dart test
 ```
+
+The test suite boots the app through `dart run spry serve`, so it exercises the real generated runtime instead of a hand-written compatibility layer.
+
+## Endpoints
+
+- `GET /`
+- `GET /users`
+- `POST /users`
+- `GET /users/:id`
+- `PATCH /users/:id`
+- `DELETE /users/:id`
 
 ## About Spry
 
-Read more about Spry at [spry.fun](https://spry.fun).
+Read more at [spry.medz.dev](https://spry.medz.dev).

@@ -2,29 +2,20 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:http/http.dart' as http;
-import 'package:http_methods/http_methods.dart';
-import 'package:spry/spry.dart';
-import 'package:spry_starter/app/app.dart';
-import 'package:spry_starter/create_spry.dart';
 import 'package:test/test.dart';
 
-void main() async {
-  late HttpServer server;
+void main() {
+  late _ServerHandle server;
 
   setUp(() async {
-    // Create a http server
-    server = await HttpServer.bind('localhost', 0);
-
-    final Spry spry = createSpry();
-    final void Function(HttpRequest request) handler = spry(app);
-
-    // Start the spry server
-    server.listen(handler);
+    server = await _startServer();
   });
 
-  tearDown(() => server.close());
+  tearDown(() async {
+    await server.close();
+  });
 
-  Uri url(String path) => Uri.parse('http://localhost:${server.port}$path');
+  Uri url(String path) => Uri.parse('http://127.0.0.1:${server.port}$path');
 
   test('GET /', () async {
     final response = await http.get(url('/'));
@@ -34,12 +25,11 @@ void main() async {
 
   test('Any /', () async {
     final client = http.Client();
-    final Iterable<String> verbs =
-        httpMethods.where((element) => element.toLowerCase() != 'get');
+    const verbs = ['DELETE', 'PATCH', 'POST', 'PUT'];
     for (final String verb in verbs) {
       final request = http.Request(verb, url('/'));
       final stream = await client.send(request);
-      expect(stream.statusCode, 200);
+      expect(stream.statusCode, 200, reason: 'verb=$verb');
     }
 
     client.close();
@@ -116,4 +106,100 @@ void main() async {
       expect(updatedUser['email'], body['email']);
     });
   });
+}
+
+Future<_ServerHandle> _startServer() async {
+  final socket = await ServerSocket.bind(InternetAddress.loopbackIPv4, 0);
+  final port = socket.port;
+  await socket.close();
+
+  final tempDir = Directory('test/.tmp');
+  await tempDir.create(recursive: true);
+  final configFile = File('test/.tmp/spry_test_$port.config.dart');
+  await configFile.writeAsString('''
+import 'package:spry/config.dart';
+
+void main() {
+  defineSpryConfig(host: '127.0.0.1', port: $port, target: BuildTarget.vm);
+}
+''');
+
+  final process = await Process.start(
+    Platform.resolvedExecutable,
+    ['run', 'spry', 'serve', '--config', configFile.path],
+    workingDirectory: Directory.current.path,
+  );
+  final output = StringBuffer();
+  process.stdout
+      .transform(utf8.decoder)
+      .transform(const LineSplitter())
+      .listen((line) => output.writeln(line));
+  process.stderr
+      .transform(utf8.decoder)
+      .transform(const LineSplitter())
+      .listen((line) => output.writeln(line));
+
+  final baseUri = Uri.parse('http://127.0.0.1:$port/');
+  for (var attempt = 0; attempt < 60; attempt++) {
+    final status = await process.exitCode.timeout(
+      const Duration(milliseconds: 1),
+      onTimeout: () => -1,
+    );
+    if (status != -1) {
+      throw StateError(
+        'spry serve exited before startup (code $status)\n${output.toString()}',
+      );
+    }
+
+    try {
+      final response = await http.get(baseUri);
+      if (response.statusCode == 200) {
+        return _ServerHandle(
+          process: process,
+          port: port,
+          configFile: configFile,
+        );
+      }
+    } on SocketException {
+      // Wait for the generated runtime to start accepting requests.
+    }
+
+    await Future<void>.delayed(const Duration(milliseconds: 250));
+  }
+
+  await _stopProcess(process);
+  if (await configFile.exists()) {
+    await configFile.delete();
+  }
+  throw StateError('spry serve did not become ready\n${output.toString()}');
+}
+
+Future<void> _stopProcess(Process process) async {
+  process.kill();
+  await process.exitCode.timeout(
+    const Duration(seconds: 5),
+    onTimeout: () {
+      process.kill(ProcessSignal.sigkill);
+      return process.exitCode;
+    },
+  );
+}
+
+class _ServerHandle {
+  _ServerHandle({
+    required this.process,
+    required this.port,
+    required this.configFile,
+  });
+
+  final Process process;
+  final int port;
+  final File configFile;
+
+  Future<void> close() async {
+    await _stopProcess(process);
+    if (await configFile.exists()) {
+      await configFile.delete();
+    }
+  }
 }

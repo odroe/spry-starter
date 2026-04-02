@@ -1,20 +1,18 @@
 name: spry_starter
-description: Spry 
+description: Starter template for building APIs with the current Spry file-routing runtime.
 version: 1.0.0
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: 'none'
 
 environment:
-  sdk: '>=2.18.6 <3.0.0'
+  sdk: ^3.10.0
 
-dependencies: 
-  spry: ^3.0.0
-  spry_interceptor: ^1.0.0
-  spry_json: ^1.0.0
-  spry_router: ^1.0.0
+dependencies:
+  spry: ^8.5.0
 
 dev_dependencies:
-  http: ^0.13.6
-  http_methods: ^1.1.1
-  lints: ^4.0.0
-  spry_fsrouter: ^1.0.0
-  test: ^1.24.3
+  http: ^1.6.0
+  lints: ^6.1.0
+  test: ^1.31.0
+
+dependency_overrides:
+  frontend_server_client: ^4.0.0
